@@ -36,7 +36,6 @@ Nodes self-register via:
 @tool("node_name")
 async def my_node(state, tools):
     ...
-```
 ## ✔ FastAPI APIs
 
 - **POST /graph/create** → Register new workflows  
@@ -122,7 +121,7 @@ Nodes may mutate state and must return:
 ```json
 {"next": "<node_name>"}   // continue workflow
 {"next": null}            // stop workflow
-```
+
 ### 🔹 2. Graph Execution
 
 The executor:
@@ -153,7 +152,7 @@ Example of an evolving state:
   "quality_score": 75,
   "meta": { "iteration": 4 }
 }
-```
+
 This structured state makes debugging and reasoning extremely easy.
 
 ---
@@ -182,9 +181,10 @@ Swagger UI allows you to test all endpoints interactively.
 ---
 
 ## 📝 Example Request: Run the Sample Graph 
-
+``` 
 **POST → `/graph/run`**
 
+```
 ```
 {
   "graph_id": "__sample__",
@@ -193,7 +193,7 @@ Swagger UI allows you to test all endpoints interactively.
   },
   "async_run": false
 }
-```
+
 ## Example Output (Actual)
 ```
 {
@@ -220,7 +220,7 @@ Swagger UI allows you to test all endpoints interactively.
 This demonstrates the full workflow running with multiple loops until the quality threshold is met.
 
 ## 🧱 Design Choices (Explained)
-### ✔ Dictionary-based state
+  ### ✔ Dictionary-based state
 
 Easy to extend, serialize, mutate, and debug.
 
